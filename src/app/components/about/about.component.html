@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="showBio" [ngStyle]="{'background-color': '#f0f8ff', 'padding': '12px', 'border-radius': '8px'}">
   <h2>Обо мне</h2>
-  <p>Краткая биография будет здесь.</p>
+  <p>Краткая биография: Семён Сабуров, изучаю Angular и создаю веб-приложения.</p>
 </section>

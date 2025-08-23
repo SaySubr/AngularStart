@@ -1,11 +1,13 @@
 <header class="header">
   <div class="brand">
-    <span>AngularStart</span>
+    <span>Angular Success</span>
   </div>
 
   <nav class="nav">
-    <a href="#">Успехи</a>
-    <a href="#">Обо мне</a>
-    <button>Погода</button>
+    <a href="#" [ngClass]="{'dark-link': darkTheme}">Успехи</a>
+    <a href="#" [ngClass]="{'dark-link': darkTheme}">Обо мне</a>
+    <button *ngIf="isLoggedIn" [ngStyle]="{'background-color': darkTheme ? '#444' : '#eee', 'color': darkTheme ? '#fff' : '#000'}">
+      Погода
+    </button>
   </nav>
 </header>

@@ -1,4 +1,17 @@
 <section>
   <h2>Мои успехи в Angular</h2>
-  <p>Список моих задач и прогресса будет здесь.</p>
+  <ul>
+    <li *ngFor="let a of achievements">
+      <span *ngIf="a.status === 'done'">✔</span>
+      <span *ngIf="a.status === 'inProgress'">⏳</span>
+      <span *ngIf="a.status === 'todo'">❌</span>
+
+      {{ a.title }}
+
+      <span [ngSwitch]="a.type">
+        <strong *ngSwitchCase="'main'">[Основное]</strong>
+        <em *ngSwitchCase="'extra'">[Дополнительно]</em>
+      </span>
+    </li>
+  </ul>
 </section>

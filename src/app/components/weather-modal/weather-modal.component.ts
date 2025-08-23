@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './weather-modal.component.html',
   styleUrl: './weather-modal.component.scss'
 })
-export class WeatherModalComponent {
-
+export class WeatherModalComponent 
+{
+  showModal = false;
+  loading = false;
 }
