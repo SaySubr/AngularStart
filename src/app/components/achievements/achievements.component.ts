@@ -13,9 +13,9 @@ export class AchievementsComponent
 {
   today = new Date();
   achievements = [
-    { title: 'Учить Angular', status: 'done', type: 'main' },
-    { title: 'Создать проект', status: 'inProgress', type: 'main' },
-    { title: 'Сделать модалку погоды', status: 'todo', type: 'extra' },
-    { title: 'Добавить реактивную форму', status: 'todo', type: 'main' }
+    { title: 'Учить Angular', status: 'done', type: 'main', level: 'high' },
+    { title: 'Создать проект', status: 'inProgress', type: 'main', level: 'medium' },
+    { title: 'Сделать модалку погоды', status: 'todo', type: 'extra', level: 'low' },
+    { title: 'Добавить реактивную форму', status: 'todo', type: 'main', level: 'medium' }
   ];
 }

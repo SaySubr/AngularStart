@@ -1,5 +1,7 @@
 <section>
   <h2>Мои успехи в Angular</h2>
+  <p>Сегодня: {{ today | date:'fullDate' }}</p>
+
   <ul>
     <li *ngFor="let a of achievements">
       <span *ngIf="a.status === 'done'">✔</span>
@@ -12,6 +14,9 @@
         <strong *ngSwitchCase="'main'">[Основное]</strong>
         <em *ngSwitchCase="'extra'">[Дополнительно]</em>
       </span>
+
+      <!-- Показываем уровень достижения с кастомным pipe -->
+      - Уровень: {{ a.level | levelEmoji }}
     </li>
   </ul>
 </section>
