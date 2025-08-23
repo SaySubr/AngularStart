@@ -1,1 +1,22 @@
-.active-link { font-weight: bold; color: #007bff; }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #222;
+  color: #fff;
+  border-bottom: 1px solid #333;
+}
+
+.brand { font-weight: 600; }
+.nav { display: flex; gap: 10px; }
+button { padding: 6px 10px; border-radius: 6px; }
+
+.brand {
+  cursor: pointer;           // курсор показывает, что элемент кликабельный
+  transition: color 0.3s;    // плавный переход цвета
+
+  &:hover {
+    color: yellow;           // при наведении текст станет желтым
+  }
+}

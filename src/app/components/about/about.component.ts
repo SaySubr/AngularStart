@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ReactiveFormsModule,HttpClient, CommonModule],
+  imports: [ReactiveFormsModule,HttpClientModule, CommonModule],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
@@ -26,7 +26,7 @@ export class AboutComponent {
 
   onSubmit() {
     if (this.aboutForm.valid) {
-      this.http.post('https://jsonplaceholder.typicode.com/posts', this.aboutForm.value)
+      this.http.post('https://jsonplaceholder.typicode.com/posts', this.aboutForm.value) //заглушка
         .subscribe({
           next: (res) => { alert('Форма успешно отправлена!'); this.aboutForm.reset(); },
           error: () => alert('Ошибка отправки формы')

@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'levelEmoji'
+  name: 'levelEmoji',
+  standalone: true
 })
 export class LevelEmojiPipe implements PipeTransform {
 

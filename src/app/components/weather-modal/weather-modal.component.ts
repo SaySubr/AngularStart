@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment';
-
 
 @Component({
   selector: 'app-weather-modal',
   standalone: true,
-  imports: [CommonModule, HttpClient],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './weather-modal.component.html',
-  styleUrl: './weather-modal.component.scss'
+  styleUrls: ['./weather-modal.component.scss']
 })
-export class WeatherModalComponent 
-{
-  showModal = false;
+export class WeatherModalComponent {
+  @Output() close = new EventEmitter<void>();
+
+  showModal = true;
   weather: any = null;
   loading = false;
 
@@ -24,17 +24,17 @@ export class WeatherModalComponent
   ];
 
   constructor(private http: HttpClient) {}
-  
-   loadWeather(location: any) {
+
+  loadWeather(location: any) {
     this.loading = true;
     const url = `https://api.airvisual.com/v2/nearest_city?lat=${location.lat}&lon=${location.lon}&key=${environment.weatherApiKey}`;
     this.http.get(url).subscribe({
-      next: (data) => { this.weather = data; this.loading = false; this.showModal = true; },
+      next: (data) => { this.weather = data; this.loading = false; },
       error: () => { this.weather = null; this.loading = false; alert('Ошибка загрузки погоды'); }
     });
   }
 
   closeModal() {
-    this.showModal = false;
+    this.close.emit(); 
   }
 }

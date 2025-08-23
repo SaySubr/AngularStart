@@ -1,7 +1,9 @@
 <header class="header">
-  <div class="brand">Angular Success</div>
-  <nav class="nav">
-    <a routerLink="/achievements" routerLinkActive="active-link">Успехи</a>
-    <a routerLink="/about" routerLinkActive="active-link">Обо мне</a>
-  </nav>
+  <div class="brand" (click)="navigate('/')">Angular Success</div>
+ <nav class="nav">
+  <button (click)="navigate('/achievements')">Успехи</button>
+  <button (click)="navigate('/about')">Обо мне</button>
+  <button (click)="openWeatherModal()">Погода</button>
+</nav>
+<app-weather-modal *ngIf="showWeatherModal" (close)="closeWeatherModal()"></app-weather-modal>
 </header>

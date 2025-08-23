@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { LevelEmojiPipe } from '../../pipes/level-emoji.pipe';
 
 
+
 @Component({
   selector: 'app-achievements',
   standalone: true,
-  imports: [LevelEmojiPipe],
+  imports: [LevelEmojiPipe,CommonModule],
   templateUrl: './achievements.component.html',
   styleUrl: './achievements.component.scss'
 })
@@ -19,4 +20,5 @@ export class AchievementsComponent
     { title: 'Сделать модалку погоды', status: 'todo', type: 'extra', level: 'low' },
     { title: 'Добавить реактивную форму', status: 'todo', type: 'main', level: 'medium' }
   ];
+
 }

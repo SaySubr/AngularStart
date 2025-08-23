@@ -1,7 +1,11 @@
 .modal {
-  background: #fff;
+  background: #42AAFF;
   border: 1px solid #ccc;
   padding: 16px;
   margin-top: 16px;
   border-radius: 8px;
+
+  max-width: 500px;        /* фиксируем максимальную ширину */
+  overflow-x: auto;        /* горизонтальная прокрутка, если содержимое шире */
+  word-break: break-word;
 }
