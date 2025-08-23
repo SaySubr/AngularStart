@@ -1,4 +1,18 @@
-<section [ngClass]="{'loading': loading}" *ngIf="showModal">
-  <h2>Модалка погоды (демо)</h2>
-  <p>Здесь будет погода для выбранной локации</p>
-</section>
+<div style="margin-top:16px;">
+  <h2>Погода</h2>
+  <ul>
+    <li *ngFor="let loc of locations">
+      <button (click)="loadWeather(loc)">{{ loc.name }}</button>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="showModal" class="modal">
+  <button (click)="closeModal()">Закрыть</button>
+  <div *ngIf="loading">Загрузка...</div>
+  <div *ngIf="weather">
+    <p>Город: {{ weather.data?.city }}</p>
+    <p>Температура: {{ weather.data?.current?.weather?.tp }}°C</p>
+    <pre>{{ weather | json }}</pre>
+  </div>
+</div>
