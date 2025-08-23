@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LevelEmojiPipe } from '../../pipes/level-emoji.pipe';
 
 
 @Component({
   selector: 'app-achievements',
   standalone: true,
-  imports: [],
+  imports: [LevelEmojiPipe],
   templateUrl: './achievements.component.html',
   styleUrl: './achievements.component.scss'
 })
