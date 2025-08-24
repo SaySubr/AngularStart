@@ -16,25 +16,55 @@ export class WeatherModalComponent {
   showModal = true;
   weather: any = null;
   loading = false;
+  selectingCity = true;
 
-  locations = [
-    { name: "Центр", lat: 56.0106, lon: 92.8526 },
-    { name: "Северо-запад", lat: 56.05, lon: 92.90 },
-    { name: "Юг", lat: 55.98, lon: 92.83 }
-  ];
+  locations = environment.weatherLocations;
 
   constructor(private http: HttpClient) {}
 
   loadWeather(location: any) {
     this.loading = true;
+    this.selectingCity = false; 
     const url = `https://api.airvisual.com/v2/nearest_city?lat=${location.lat}&lon=${location.lon}&key=${environment.weatherApiKey}`;
     this.http.get(url).subscribe({
-      next: (data) => { this.weather = data; this.loading = false; },
-      error: () => { this.weather = null; this.loading = false; alert('Ошибка загрузки погоды'); }
+      next: (data) => { 
+        this.weather = data; 
+        this.loading = false; 
+      },
+      error: () => { 
+        this.weather = null; 
+        this.loading = false; 
+        alert('Ошибка загрузки погоды'); 
+      }
     });
+  }
+
+  backToCities() {
+    this.selectingCity = true; 
+    this.weather = null;        
   }
 
   closeModal() {
     this.close.emit(); 
   }
+
+getTemperatureColor(): string {
+  const temp = this.weather?.data?.current?.weather?.tp;
+  if (temp == null) return '#42AAFF'; // стандартный фон
+
+  const minTemp = 1;
+  const maxTemp = 27;
+  const clampedTemp = Math.min(Math.max(temp, minTemp), maxTemp);
+  const percent = (clampedTemp - minTemp) / (maxTemp - minTemp);
+
+  const coldColor = { r: 13, g: 59, b: 102 };   // тёмно-синий
+  const warmColor = { r: 255, g: 107, b: 107 };  // красноватый
+
+  const r = Math.round(coldColor.r + percent * (warmColor.r - coldColor.r));
+  const g = Math.round(coldColor.g + percent * (warmColor.g - coldColor.g));
+  const b = Math.round(coldColor.b + percent * (warmColor.b - coldColor.b));
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
 }

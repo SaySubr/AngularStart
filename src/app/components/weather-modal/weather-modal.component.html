@@ -1,17 +1,24 @@
-<div class="modal">
+<div class="modal" [style.background-color]="getTemperatureColor()">
   <button (click)="closeModal()">Закрыть</button>
   <div *ngIf="loading">Загрузка...</div>
-  <div *ngIf="weather">
+
+
+  <div *ngIf="!selectingCity && weather">
     <p>Город: {{ weather.data?.city }}</p>
     <p>Температура: {{ weather.data?.current?.weather?.tp }}°C</p>
+    <p>Скорость ветра: {{ weather.data?.current?.weather?.ws }} м/с</p>
+    <p>Направление ветра: {{ weather.data?.current?.weather?.wd }}°</p>
     <!-- <pre>{{ weather | json }}</pre> -->
-    <!-- Json При желании можно включить json (отладочная информация)-->
+    <!-- Json weather При желании можно включить (отладочная информация)-->
+    <button (click)="backToCities()">Вернуться к списку городов</button>
   </div>
 
-  <h3>Выберите точку</h3>
-  <ul>
-    <li *ngFor="let loc of locations">
-      <button (click)="loadWeather(loc)">{{ loc.name }}</button>
-    </li>
-  </ul>
+  <div *ngIf="selectingCity">
+    <h3>Выберите точку</h3>
+    <ul>
+      <li *ngFor="let loc of locations">
+        <button (click)="loadWeather(loc)">{{ loc.name }}</button>
+      </li>
+    </ul>
+  </div>
 </div>

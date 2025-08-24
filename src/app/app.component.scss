@@ -3,3 +3,15 @@
   margin: 24px auto;
   padding: 0 16px;
 }
+.weather-global {
+  position: fixed;
+  top: 70px; 
+  right: 20px;
+  width: 250px;
+  background: rgb(79, 177, 219);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+}

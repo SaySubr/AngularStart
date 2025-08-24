@@ -1,7 +1,14 @@
-<app-header></app-header>
+<app-header (weatherClick)="toggleWeather()"></app-header>
+
 
 <main class="container" style="padding: 16px;">
   <router-outlet></router-outlet>
 </main>
 
 <app-footer></app-footer>
+
+<app-weather-modal 
+  *ngIf="showWeather" 
+  (close)="closeWeather()" 
+  class="weather-global">
+</app-weather-modal>

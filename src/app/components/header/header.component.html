@@ -1,9 +1,8 @@
 <header class="header">
-  <div class="brand" (click)="navigate('/')">Angular Success</div>
+  <div class="brand" (click)="navigate('/')">Angular Start</div>
  <nav class="nav">
   <button (click)="navigate('/achievements')">Успехи</button>
   <button (click)="navigate('/about')">Обо мне</button>
-  <button (click)="openWeatherModal()">Погода</button>
+  <button (click)="onWeatherClick()">Погода</button>
 </nav>
-<app-weather-modal *ngIf="showWeatherModal" (close)="closeWeatherModal()"></app-weather-modal>
 </header>
